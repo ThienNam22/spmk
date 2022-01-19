@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://hoaDonBrowse.caption"
+        focusComponent="hoaDonsTable"
+        messagesPack="com.company.spmk.web.screens.hoadon">
+    <data readOnly="true">
+        <collection id="hoaDonsDc"
+                    class="com.company.spmk.entity.HoaDon">
+            <view extends="hoaDon-view"/>
+            <loader id="hoaDonsDl">
+                <query>
+                    <![CDATA[select e from spmk_HoaDon e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="hoaDonsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="hoaDonsTable"
+                dataLoader="hoaDonsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="hoaDonsTable"
+                    width="100%"
+                    dataContainer="hoaDonsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maHoaDon"/>
+                <column id="phieuMua"/>
+                <column id="nhaCc"/>
+                <column id="kho"/>
+                <column id="ngayGiao"/>
+                <column id="ngayLap"/>
+                <column id="nguoiLap"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="hoaDonsTable.create"/>
+                <button id="editBtn" action="hoaDonsTable.edit"/>
+                <button id="removeBtn" action="hoaDonsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

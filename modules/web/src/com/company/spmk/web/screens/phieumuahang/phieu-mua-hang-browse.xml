@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://phieuMuaHangBrowse.caption"
+        focusComponent="phieuMuaHangsTable"
+        messagesPack="com.company.spmk.web.screens.phieumuahang">
+    <data readOnly="true">
+        <collection id="phieuMuaHangsDc"
+                    class="com.company.spmk.entity.PhieuMuaHang">
+            <view extends="phieuMuaHang-view"/>
+            <loader id="phieuMuaHangsDl">
+                <query>
+                    <![CDATA[select e from spmk_PhieuMuaHang e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="phieuMuaHangsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="phieuMuaHangsTable"
+                dataLoader="phieuMuaHangsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="phieuMuaHangsTable"
+                    width="100%"
+                    dataContainer="phieuMuaHangsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maPhieuMua"/>
+                <column id="nhaCc"/>
+                <column id="kho"/>
+                <column id="thanhToan"/>
+                <column id="ngayLap"/>
+                <column id="maNhanVien"/>
+                <column id="phieuNhap"/>
+                <column id="hoaDon"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="phieuMuaHangsTable.create"/>
+                <button id="editBtn" action="phieuMuaHangsTable.edit"/>
+                <button id="removeBtn" action="phieuMuaHangsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

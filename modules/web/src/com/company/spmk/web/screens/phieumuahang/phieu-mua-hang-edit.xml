@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://phieuMuaHangEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.phieumuahang">
+    <data>
+        <instance id="phieuMuaHangDc"
+                  class="com.company.spmk.entity.PhieuMuaHang">
+            <view extends="phieuMuaHang-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="phieuMuaHangDc">
+            <column width="350px">
+                <textField id="maPhieuMuaField" property="maPhieuMua"/>
+                <pickerField id="nhaCcField" property="nhaCc">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="khoField" property="kho">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="thanhToanField" property="thanhToan"/>
+                <dateField id="ngayLapField" property="ngayLap"/>
+                <textField id="maNhanVienField" property="maNhanVien"/>
+                <pickerField id="phieuNhapKhoField" property="phieuNhap">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="hoaDonField" property="hoaDon">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+            <button id="getDateBtn" caption="Lay Ngay"/>
+        </hbox>
+    </layout>
+</window>

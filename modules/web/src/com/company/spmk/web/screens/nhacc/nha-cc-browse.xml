@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://nhaCcBrowse.caption"
+        focusComponent="nhaCcsTable"
+        messagesPack="com.company.spmk.web.screens.nhacc">
+    <data readOnly="true">
+        <collection id="nhaCcsDc"
+                    class="com.company.spmk.entity.NhaCc">
+            <view extends="nhaCc-view"/>
+            <loader id="nhaCcsDl">
+                <query>
+                    <![CDATA[select e from spmk_NhaCc e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="nhaCcsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="nhaCcsTable"
+                dataLoader="nhaCcsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="nhaCcsTable"
+                    width="100%"
+                    dataContainer="nhaCcsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maNhaCc"/>
+                <column id="tenNhaCc"/>
+                <column id="sdtNhaCc"/>
+                <column id="diaChi"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="nhaCcsTable.create"/>
+                <button id="editBtn" action="nhaCcsTable.edit"/>
+                <button id="removeBtn" action="nhaCcsTable.remove"/>
+                <upload id="nhaCcUpload" uploadButtonCaption="Import Excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

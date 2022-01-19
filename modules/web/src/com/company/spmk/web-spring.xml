@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gui="http://schemas.haulmont.com/cuba/spring/cuba-gui.xsd">
+
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="com.company.spmk"/>
+    
+    <gui:screens base-packages="com.company.spmk.web"/>
+    <bean id="spmk_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="spmk_HangHoaService" value="com.company.spmk.service.HangHoaService"/>
+                <entry key="spmk_HangHoaExcelReaderService" value="com.company.spmk.service.HangHoaExcelReaderService"/>
+                <entry key="spmk_SieuThiService" value="com.company.spmk.service.SieuThiService"/>
+                <entry key="spmk_ExcelReaderService" value="com.company.spmk.service.ExcelReaderService"/>
+                <entry key="spmk_NhaCcService" value="com.company.spmk.service.NhaCcService"/>
+                <entry key="spmk_KhoService" value="com.company.spmk.service.KhoService"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>

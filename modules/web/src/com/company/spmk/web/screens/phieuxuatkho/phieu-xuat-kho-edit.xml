@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://phieuXuatKhoEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.phieuxuatkho">
+    <data>
+        <instance id="phieuXuatKhoDc"
+                  class="com.company.spmk.entity.PhieuXuatKho">
+            <view extends="phieuXuatKho-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="phieuXuatKhoDc">
+            <column width="350px">
+                <textField id="maPXField" property="maPX"/>
+                <pickerField id="sieuThiField" property="sieuThi">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="khoField" property="kho">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <dateField id="ngayLapField" property="ngayLap"/>
+                <textField id="maNhanVienField" property="maNhanVien"/>
+                <pickerField id="phieuMuaField" property="phieuMua">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

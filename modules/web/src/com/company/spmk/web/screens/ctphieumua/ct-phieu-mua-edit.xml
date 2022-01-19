@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://CTPhieuMuaEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.ctphieumua">
+    <data>
+        <instance id="cTPhieuMuaDc"
+                  class="com.company.spmk.entity.CTPhieuMua">
+            <view extends="cTPhieuMua-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="cTPhieuMuaDc">
+            <column width="350px">
+                <pickerField id="phieuMuaField" property="phieuMua">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="hangHoaField" property="hangHoa">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="soLuongField" property="soLuong"/>
+                <textField id="ghiChuField" property="ghiChu"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

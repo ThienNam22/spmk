@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://hangHoaBrowse.caption"
+        focusComponent="hangHoasTable"
+        messagesPack="com.company.spmk.web.screens.hanghoa">
+    <data readOnly="true">
+        <collection id="hangHoasDc"
+                    class="com.company.spmk.entity.HangHoa">
+<!--            <view extends="_local">-->
+<!--                <property name="sieuThi" view="_minimal"/>-->
+<!--                <property name="nhaCc" view="_minimal"/>-->
+<!--            </view>-->
+            <view extends="hangHoa-view"></view>
+            <loader id="hangHoasDl">
+                <query>
+                    <![CDATA[select e from spmk_HangHoa e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800" closeOnClickOutside="true"/>
+    <layout expand="hangHoasTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="hangHoasTable"
+                dataLoader="hangHoasDl" align="TOP_RIGHT">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="hangHoasTable"
+                    width="100%"
+                    dataContainer="hangHoasDc" multiselect="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="maHang"/>
+                <column id="tenHang"/>
+                <column id="donViTinh"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="hangHoasTable.create"/>
+                <button id="editBtn" action="hangHoasTable.edit"/>
+                <button id="removeBtn" action="hangHoasTable.remove"/>
+                <button id="viewBtn" caption="Details"/>
+                <button id="addMoreBtn" caption="Add more"/>
+                <button id="excelBtn" action="hangHoasTable.excel" caption="Export Excel"/>
+                <upload id="excelUpload" accept=".xls, .xlsx" permittedExtensions=".xls, .xlsx"
+                        uploadButtonCaption="Import Excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

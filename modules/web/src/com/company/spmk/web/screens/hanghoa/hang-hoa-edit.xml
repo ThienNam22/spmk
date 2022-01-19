@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://hangHoaEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.hanghoa">
+    <data>
+        <instance id="hangHoaDc"
+                  class="com.company.spmk.entity.HangHoa">
+<!--            <view extends="_local">-->
+<!--                <property name="sieuThi" view="_minimal"/>-->
+<!--                <property name="nhaCc" view="_minimal"/>-->
+<!--            </view>-->
+            <view extends="hangHoa-view"></view>
+            <loader/>
+            <collection id="sieuThiDc" property="sieuThi"/>
+            <collection id="nhaCcDc" property="nhaCc"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="hangHoaDc">
+            <column width="350px">
+                <textField id="maHangField" property="maHang"/>
+                <textField id="tenHangField" property="tenHang"/>
+                <textField id="donViTinhField" property="donViTinh"/>
+            </column>
+        </form>
+        <groupBox id="sieuThiBox" caption="msg://com.company.spmk.entity/HangHoa.sieuThi">
+            <table id="sieuThiTable" dataContainer="sieuThiDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                </columns>
+                <buttonsPanel>
+                    <button action="sieuThiTable.add"/>
+                    <button action="sieuThiTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="nhaCcBox" caption="msg://com.company.spmk.entity/HangHoa.nhaCc">
+            <table id="nhaCcTable" dataContainer="nhaCcDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                </columns>
+                <buttonsPanel>
+                    <button action="nhaCcTable.add"/>
+                    <button action="nhaCcTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://tonKhoBrowse.caption"
+        focusComponent="tonKhoesTable"
+        messagesPack="com.company.spmk.web.screens.tonkho">
+    <data readOnly="true">
+        <collection id="tonKhoesDc"
+                    class="com.company.spmk.entity.TonKho">
+            <view extends="tonKho-view"/>
+            <loader id="tonKhoesDl">
+                <query>
+                    <![CDATA[select e from spmk_TonKho e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tonKhoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tonKhoesTable"
+                dataLoader="tonKhoesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tonKhoesTable"
+                    width="100%"
+                    dataContainer="tonKhoesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kho"/>
+                <column id="soLuongTon"/>
+                <column id="tinhTrang"/>
+                <column id="hangHoa"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tonKhoesTable.create"/>
+                <button id="editBtn" action="tonKhoesTable.edit"/>
+                <button id="removeBtn" action="tonKhoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://sieuThiEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.sieuthi">
+    <data>
+        <instance id="sieuThiDc"
+                  class="com.company.spmk.entity.SieuThi">
+            <view extends="_local">
+                <property name="hangHoa" view="_local"/>
+            </view>
+            <loader/>
+            <collection id="hangHoaDc" property="hangHoa"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="sieuThiDc">
+            <column width="350px">
+                <textField id="maSieuThiField" property="maSieuThi"/>
+                <textField id="quanLyTruongField" property="quanLyTruong"/>
+                <textField id="sdtSieuThiField" property="sdtSieuThi"/>
+                <textField id="diaChiField" property="diaChi"/>
+            </column>
+        </form>
+        <groupBox id="hangHoaBox" caption="msg://com.company.spmk.entity/SieuThi.hangHoa">
+            <table id="hangHoaTable" dataContainer="hangHoaDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                </columns>
+                <buttonsPanel>
+                    <button action="hangHoaTable.add"/>
+                    <button action="hangHoaTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

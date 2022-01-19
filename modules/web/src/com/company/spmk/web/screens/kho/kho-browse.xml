@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://khoBrowse.caption"
+        focusComponent="khoesTable"
+        messagesPack="com.company.spmk.web.screens.kho">
+    <data readOnly="true">
+        <collection id="khoesDc"
+                    class="com.company.spmk.entity.Kho">
+            <view extends="kho-view"/>
+            <loader id="khoesDl">
+                <query>
+                    <![CDATA[select e from spmk_Kho e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="khoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="khoesTable"
+                dataLoader="khoesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="khoesTable"
+                    width="100%"
+                    dataContainer="khoesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="maKho"/>
+                <column id="tenKho"/>
+                <column id="thuKho"/>
+                <column id="sdtKho"/>
+                <column id="diaChi"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="khoesTable.create"/>
+                <button id="editBtn" action="khoesTable.edit"/>
+                <button id="removeBtn" action="khoesTable.remove"/>
+                <upload id="khoUpload" uploadButtonCaption="Import Excel" />
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="spmk" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.spmk.entity.HangHoa</class>
+        <class>com.company.spmk.entity.SieuThi</class>
+        <class>com.company.spmk.entity.Kho</class>
+        <class>com.company.spmk.entity.TonKho</class>
+        <class>com.company.spmk.entity.PhieuXuatKho</class>
+        <class>com.company.spmk.entity.CTPhieuXuat</class>
+        <class>com.company.spmk.entity.NhaCc</class>
+        <class>com.company.spmk.entity.PhieuNhapKho</class>
+        <class>com.company.spmk.entity.CTPhieuNhap</class>
+        <class>com.company.spmk.entity.PhieuMuaHang</class>
+        <class>com.company.spmk.entity.CTPhieuMua</class>
+        <class>com.company.spmk.entity.HoaDon</class>
+        <class>com.company.spmk.entity.CTHoaDon</class>
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://tonKhoEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.spmk.web.screens.tonkho">
+    <data>
+        <instance id="tonKhoDc"
+                  class="com.company.spmk.entity.TonKho">
+            <view extends="tonKho-view"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="tonKhoDc">
+            <column width="350px">
+                <pickerField id="khoField" property="kho">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="soLuongTonField" property="soLuongTon"/>
+                <textField id="tinhTrangField" property="tinhTrang"/>
+                <pickerField id="hangHoaField" property="hangHoa">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

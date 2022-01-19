@@ -1,0 +1,66 @@
+-- begin SPMK_TON_KHO
+alter table SPMK_TON_KHO add constraint FK_SPMK_TON_KHO_ON_MA_KHO foreign key (MA_KHO_ID) references SPMK_KHO(ID)^
+alter table SPMK_TON_KHO add constraint FK_SPMK_TON_KHO_ON_MA_HANG foreign key (MA_HANG_ID) references SPMK_HANG_HOA(ID)^
+create index IDX_SPMK_TON_KHO_ON_MA_KHO on SPMK_TON_KHO (MA_KHO_ID)^
+create index IDX_SPMK_TON_KHO_ON_MA_HANG on SPMK_TON_KHO (MA_HANG_ID)^
+-- end SPMK_TON_KHO
+-- begin SPMK_PHIEU_MUA_HANG
+alter table SPMK_PHIEU_MUA_HANG add constraint FK_SPMK_PHIEU_MUA_HANG_ON_NHA_CC foreign key (NHA_CC_ID) references SPMK_NHA_CC(ID)^
+alter table SPMK_PHIEU_MUA_HANG add constraint FK_SPMK_PHIEU_MUA_HANG_ON_KHO foreign key (KHO_ID) references SPMK_KHO(ID)^
+alter table SPMK_PHIEU_MUA_HANG add constraint FK_SPMK_PHIEU_MUA_HANG_ON_PHIEU_NHAP foreign key (PHIEU_NHAP_ID) references SPMK_PHIEU_NHAP_KHO(ID)^
+create index IDX_SPMK_PHIEU_MUA_HANG_ON_NHA_CC on SPMK_PHIEU_MUA_HANG (NHA_CC_ID)^
+create index IDX_SPMK_PHIEU_MUA_HANG_ON_KHO on SPMK_PHIEU_MUA_HANG (KHO_ID)^
+create index IDX_SPMK_PHIEU_MUA_HANG_ON_PHIEU_NHAP on SPMK_PHIEU_MUA_HANG (PHIEU_NHAP_ID)^
+-- end SPMK_PHIEU_MUA_HANG
+-- begin SPMK_HOA_DON
+alter table SPMK_HOA_DON add constraint FK_SPMK_HOA_DON_ON_PHIEU_MUA foreign key (PHIEU_MUA_ID) references SPMK_PHIEU_MUA_HANG(ID)^
+alter table SPMK_HOA_DON add constraint FK_SPMK_HOA_DON_ON_NHA_CC foreign key (NHA_CC_ID) references SPMK_NHA_CC(ID)^
+alter table SPMK_HOA_DON add constraint FK_SPMK_HOA_DON_ON_KHO foreign key (KHO_ID) references SPMK_KHO(ID)^
+create index IDX_SPMK_HOA_DON_ON_PHIEU_MUA on SPMK_HOA_DON (PHIEU_MUA_ID)^
+create index IDX_SPMK_HOA_DON_ON_NHA_CC on SPMK_HOA_DON (NHA_CC_ID)^
+create index IDX_SPMK_HOA_DON_ON_KHO on SPMK_HOA_DON (KHO_ID)^
+-- end SPMK_HOA_DON
+-- begin SPMK_CT_PHIEU_MUA
+alter table SPMK_CT_PHIEU_MUA add constraint FK_SPMK_CT_PHIEU_MUA_ON_PHIEU_MUA foreign key (PHIEU_MUA_ID) references SPMK_PHIEU_MUA_HANG(ID)^
+alter table SPMK_CT_PHIEU_MUA add constraint FK_SPMK_CT_PHIEU_MUA_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+create index IDX_SPMK_CT_PHIEU_MUA_ON_PHIEU_MUA on SPMK_CT_PHIEU_MUA (PHIEU_MUA_ID)^
+create index IDX_SPMK_CT_PHIEU_MUA_ON_HANG_HOA on SPMK_CT_PHIEU_MUA (HANG_HOA_ID)^
+-- end SPMK_CT_PHIEU_MUA
+-- begin SPMK_CT_PHIEU_XUAT
+alter table SPMK_CT_PHIEU_XUAT add constraint FK_SPMK_CT_PHIEU_XUAT_ON_PHIEU_XUAT foreign key (PHIEU_XUAT_ID) references SPMK_PHIEU_XUAT_KHO(ID)^
+alter table SPMK_CT_PHIEU_XUAT add constraint FK_SPMK_CT_PHIEU_XUAT_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+create index IDX_SPMK_CT_PHIEU_XUAT_ON_PHIEU_XUAT on SPMK_CT_PHIEU_XUAT (PHIEU_XUAT_ID)^
+create index IDX_SPMK_CT_PHIEU_XUAT_ON_HANG_HOA on SPMK_CT_PHIEU_XUAT (HANG_HOA_ID)^
+-- end SPMK_CT_PHIEU_XUAT
+-- begin SPMK_CT_PHIEU_NHAP
+alter table SPMK_CT_PHIEU_NHAP add constraint FK_SPMK_CT_PHIEU_NHAP_ON_PHIEU_NHAP foreign key (PHIEU_NHAP_ID) references SPMK_PHIEU_NHAP_KHO(ID)^
+alter table SPMK_CT_PHIEU_NHAP add constraint FK_SPMK_CT_PHIEU_NHAP_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+create index IDX_SPMK_CT_PHIEU_NHAP_ON_PHIEU_NHAP on SPMK_CT_PHIEU_NHAP (PHIEU_NHAP_ID)^
+create index IDX_SPMK_CT_PHIEU_NHAP_ON_HANG_HOA on SPMK_CT_PHIEU_NHAP (HANG_HOA_ID)^
+-- end SPMK_CT_PHIEU_NHAP
+-- begin SPMK_PHIEU_XUAT_KHO
+alter table SPMK_PHIEU_XUAT_KHO add constraint FK_SPMK_PHIEU_XUAT_KHO_ON_SIEU_THI foreign key (SIEU_THI_ID) references SPMK_SIEU_THI(ID)^
+alter table SPMK_PHIEU_XUAT_KHO add constraint FK_SPMK_PHIEU_XUAT_KHO_ON_KHO foreign key (KHO_ID) references SPMK_KHO(ID)^
+create index IDX_SPMK_PHIEU_XUAT_KHO_ON_SIEU_THI on SPMK_PHIEU_XUAT_KHO (SIEU_THI_ID)^
+create index IDX_SPMK_PHIEU_XUAT_KHO_ON_KHO on SPMK_PHIEU_XUAT_KHO (KHO_ID)^
+-- end SPMK_PHIEU_XUAT_KHO
+-- begin SPMK_PHIEU_NHAP_KHO
+alter table SPMK_PHIEU_NHAP_KHO add constraint FK_SPMK_PHIEU_NHAP_KHO_ON_KHO foreign key (KHO_ID) references SPMK_KHO(ID)^
+alter table SPMK_PHIEU_NHAP_KHO add constraint FK_SPMK_PHIEU_NHAP_KHO_ON_NHA_CC foreign key (NHA_CC_ID) references SPMK_NHA_CC(ID)^
+create index IDX_SPMK_PHIEU_NHAP_KHO_ON_KHO on SPMK_PHIEU_NHAP_KHO (KHO_ID)^
+create index IDX_SPMK_PHIEU_NHAP_KHO_ON_NHA_CC on SPMK_PHIEU_NHAP_KHO (NHA_CC_ID)^
+-- end SPMK_PHIEU_NHAP_KHO
+-- begin SPMK_CT_HOA_DON
+alter table SPMK_CT_HOA_DON add constraint FK_SPMK_CT_HOA_DON_ON_HOA_DON foreign key (HOA_DON_ID) references SPMK_HOA_DON(ID)^
+alter table SPMK_CT_HOA_DON add constraint FK_SPMK_CT_HOA_DON_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+create index IDX_SPMK_CT_HOA_DON_ON_HOA_DON on SPMK_CT_HOA_DON (HOA_DON_ID)^
+create index IDX_SPMK_CT_HOA_DON_ON_HANG_HOA on SPMK_CT_HOA_DON (HANG_HOA_ID)^
+-- end SPMK_CT_HOA_DON
+-- begin SPMK_NHA_CC_HANG_HOA
+alter table SPMK_NHA_CC_HANG_HOA add constraint FK_NHACCHANHOA_ON_NHA_CC foreign key (NHA_CC_ID) references SPMK_NHA_CC(ID)^
+alter table SPMK_NHA_CC_HANG_HOA add constraint FK_NHACCHANHOA_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+-- end SPMK_NHA_CC_HANG_HOA
+-- begin SPMK_SIEU_THI_HANG_HOA
+alter table SPMK_SIEU_THI_HANG_HOA add constraint FK_SIETHIHANHOA_ON_SIEU_THI foreign key (SIEU_THI_ID) references SPMK_SIEU_THI(ID)^
+alter table SPMK_SIEU_THI_HANG_HOA add constraint FK_SIETHIHANHOA_ON_HANG_HOA foreign key (HANG_HOA_ID) references SPMK_HANG_HOA(ID)^
+-- end SPMK_SIEU_THI_HANG_HOA

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-spmk" insertBefore="administration" caption="mainMsg://menu_config.application-spmk">
+        <item screen="spmk_HangHoa.browse" caption="mainMsg://menu_config.spmk_HangHoa.browse"/>
+        <item screen="spmk_SieuThi.browse" caption="mainMsg://menu_config.spmk_SieuThi.browse"/>
+        <item screen="spmk_Kho.browse" caption="mainMsg://menu_config.spmk_Kho.browse"/>
+        <item screen="spmk_NhaCc.browse" caption="mainMsg://menu_config.spmk_NhaCc.browse"/>
+        <item screen="spmk_TonKho.browse" caption="mainMsg://menu_config.spmk_TonKho.browse"/>
+        <menu id="cacphieu-spmk" caption="mainMsg://menu_config.cacphieu-spmk" description="">
+            <item screen="spmk_PhieuMuaHang.browse" caption="mainMsg://menu_config.spmk_PhieuMuaHang.browse"/>
+            <item screen="spmk_HoaDon.browse" caption="mainMsg://menu_config.spmk_HoaDon.browse"/>
+            <item screen="spmk_PhieuNhapKho.browse" caption="mainMsg://menu_config.spmk_PhieuNhapKho.browse"/>
+            <item screen="spmk_PhieuXuatKho.browse" caption="mainMsg://menu_config.spmk_PhieuXuatKho.browse"/>
+        </menu>
+        <menu id="chitietcacphieu-spmk" caption="mainMsg://menu_config.chitietcacphieu-spmk" description="">
+            <item screen="spmk_CTHoaDon.browse" caption="mainMsg://menu_config.spmk_CTHoaDon.browse"/>
+            <item screen="spmk_CTPhieuMua.browse" caption="mainMsg://menu_config.spmk_CTPhieuMua.browse"/>
+            <item screen="spmk_CTPhieuNhap.browse" caption="mainMsg://menu_config.spmk_CTPhieuNhap.browse"/>
+            <item screen="spmk_CTPhieuXuat.browse" caption="mainMsg://menu_config.spmk_CTPhieuXuat.browse"/>
+        </menu>
+    </menu>
+</menu-config>

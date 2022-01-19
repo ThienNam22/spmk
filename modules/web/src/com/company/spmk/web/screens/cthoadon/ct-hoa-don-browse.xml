@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://CTHoaDonBrowse.caption"
+        focusComponent="cTHoaDonsTable"
+        messagesPack="com.company.spmk.web.screens.cthoadon">
+    <data readOnly="true">
+        <collection id="cTHoaDonsDc"
+                    class="com.company.spmk.entity.CTHoaDon">
+            <view extends="cTHoaDon-view"/>
+            <loader id="cTHoaDonsDl">
+                <query>
+                    <![CDATA[select e from spmk_CTHoaDon e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="cTHoaDonsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="cTHoaDonsTable"
+                dataLoader="cTHoaDonsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="cTHoaDonsTable"
+                    width="100%"
+                    dataContainer="cTHoaDonsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="hoaDon"/>
+                <column id="hangHoa"/>
+                <column id="soLuong"/>
+                <column id="donGia"/>
+                <column id="ghiChu"/>
+                <column id="thanhTien"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="cTHoaDonsTable.create"/>
+                <button id="editBtn" action="cTHoaDonsTable.edit"/>
+                <button id="removeBtn" action="cTHoaDonsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="spmk_HangHoa" name="hangHoa-view" extends="_local">
+        <property name="sieuThi" view="_local"/>
+        <property name="nhaCc" view="_local"/>
+    </view>
+    <view entity="spmk_NhaCc" name="nhaCc-view" extends="_local">
+        <property name="hangHoa" view="_minimal"/>
+    </view>
+    <view entity="spmk_Kho" name="kho-view" extends="_local"/>
+    <view entity="spmk_HoaDon" name="hoaDon-view" extends="_local">
+        <property name="phieuMua" view="_local"/>
+        <property name="nhaCc" view="_local"/>
+        <property name="kho" view="_local"/>
+    </view>
+    <view entity="spmk_SieuThi" name="sieuThi-view" extends="_local">
+        <property name="hangHoa" view="_local"/>
+    </view>
+    <view entity="spmk_TonKho" name="tonKho-view" extends="_local">
+        <property name="kho" view="_local"/>
+        <property name="hangHoa" view="_local"/>
+    </view>
+    <view entity="spmk_CTHoaDon" name="cTHoaDon-view" extends="_local">
+        <property name="hoaDon" view="_local"/>
+        <property name="hangHoa" view="_local"/>
+        <property name="thanhTien"/>
+    </view>
+    <view entity="spmk_CTPhieuMua" name="cTPhieuMua-view" extends="_local">
+        <property name="phieuMua" view="_local"/>
+        <property name="hangHoa" view="_local"/>
+    </view>
+    <view entity="spmk_CTPhieuNhap" name="cTPhieuNhap-view" extends="_local">
+        <property name="phieuNhap" view="_local"/>
+        <property name="hangHoa" view="_local"/>
+    </view>
+    <view entity="spmk_CTPhieuXuat" name="cTPhieuXuat-view" extends="_local">
+        <property name="phieuXuat" view="_local"/>
+        <property name="hangHoa" view="_local"/>
+    </view>
+    <view entity="spmk_PhieuMuaHang" name="phieuMuaHang-view" extends="_local">
+        <property name="nhaCc" view="_local"/>
+        <property name="kho" view="_local"/>
+        <property name="hoaDon" view="_local"/>
+        <property name="phieuNhap" view="_local"/>
+    </view>
+    <view entity="spmk_PhieuNhapKho" name="phieuNhapKho-view" extends="_local">
+        <property name="kho" view="_local"/>
+        <property name="nhaCc" view="_local"/>
+    </view>
+    <view entity="spmk_PhieuXuatKho" name="phieuXuatKho-view" extends="_local">
+        <property name="sieuThi" view="_local"/>
+        <property name="kho" view="_local"/>
+    </view>
+</views>
